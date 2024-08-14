@@ -1,7 +1,9 @@
 import { Module } from '@nestjs/common'
 
+import { ChooseQuestionBestAnswerUseCase } from '@/domain/forum/application/use-cases/choose-question-best-answer'
 import { FetchQuestionsAnswersUseCase } from '@/domain/forum/application/use-cases/fetch-question-answers'
 import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/fetch-recent-questions'
+import { ChooseQuestionBestAnswerCotroller } from './controllers/choose-question-best-answer.controller'
 import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticate-student'
 import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/get-question-by-slug'
 import { FetchRecentQuestionsCotroller } from './controllers/fetch-recent-questions.controller'
@@ -37,6 +39,7 @@ import { DatabaseModule } from '../database/database.module'
     EditAnswerCotroller,
     DeleteAnswerCotroller,
     FetchQuestionAnswersCotroller,
+    ChooseQuestionBestAnswerCotroller,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -50,6 +53,7 @@ import { DatabaseModule } from '../database/database.module'
     EditAnswerUseCase,
     DeleteAnswerUseCase,
     FetchQuestionsAnswersUseCase,
+    ChooseQuestionBestAnswerUseCase,
   ],
 })
 export class HttpModule {}
