@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common'
 
+import { FetchQuestionsAnswersUseCase } from '@/domain/forum/application/use-cases/fetch-question-answers'
 import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/fetch-recent-questions'
 import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticate-student'
 import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/get-question-by-slug'
 import { FetchRecentQuestionsCotroller } from './controllers/fetch-recent-questions.controller'
+import { FetchQuestionAnswersCotroller } from './controllers/fetch-question-answers.controller'
 import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/register-student'
 import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/create-question'
 import { AnswerQuestionUseCase } from '@/domain/forum/application/use-cases/answer-question'
@@ -34,6 +36,7 @@ import { DatabaseModule } from '../database/database.module'
     AnswerQuestionCotroller,
     EditAnswerCotroller,
     DeleteAnswerCotroller,
+    FetchQuestionAnswersCotroller,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -46,6 +49,7 @@ import { DatabaseModule } from '../database/database.module'
     AnswerQuestionUseCase,
     EditAnswerUseCase,
     DeleteAnswerUseCase,
+    FetchQuestionsAnswersUseCase,
   ],
 })
 export class HttpModule {}
