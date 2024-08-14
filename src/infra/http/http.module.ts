@@ -6,12 +6,14 @@ import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-case
 import { ChooseQuestionBestAnswerCotroller } from './controllers/choose-question-best-answer.controller'
 import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticate-student'
 import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/get-question-by-slug'
+import { CommentOnQuestionUseCase } from '@/domain/forum/application/use-cases/comment-on-question'
 import { FetchRecentQuestionsCotroller } from './controllers/fetch-recent-questions.controller'
 import { FetchQuestionAnswersCotroller } from './controllers/fetch-question-answers.controller'
 import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/register-student'
 import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/create-question'
 import { AnswerQuestionUseCase } from '@/domain/forum/application/use-cases/answer-question'
 import { GetQuestionBySlugCotroller } from './controllers/get-question-by-slug.controller'
+import { CommentOnQuestionCotroller } from './controllers/comment-on-question.controller'
 import { DeleteAnswerUseCase } from '@/domain/forum/application/use-cases/delete-answer'
 import { EditAnswerUseCase } from '@/domain/forum/application/use-cases/edit-answer'
 import { CreateQuestionCotroller } from './controllers/create-question.controller'
@@ -40,6 +42,7 @@ import { DatabaseModule } from '../database/database.module'
     DeleteAnswerCotroller,
     FetchQuestionAnswersCotroller,
     ChooseQuestionBestAnswerCotroller,
+    CommentOnQuestionCotroller,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -54,6 +57,7 @@ import { DatabaseModule } from '../database/database.module'
     DeleteAnswerUseCase,
     FetchQuestionsAnswersUseCase,
     ChooseQuestionBestAnswerUseCase,
+    CommentOnQuestionUseCase,
   ],
 })
 export class HttpModule {}
