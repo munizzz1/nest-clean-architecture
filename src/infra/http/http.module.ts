@@ -11,12 +11,14 @@ import { CommentOnQuestionUseCase } from '@/domain/forum/application/use-cases/c
 import { DeleteQuestionCommentCotroller } from './controllers/delete-question-comment.controller'
 import { FetchRecentQuestionsCotroller } from './controllers/fetch-recent-questions.controller'
 import { FetchQuestionAnswersCotroller } from './controllers/fetch-question-answers.controller'
+import { CommentOnAnswerUseCase } from '@/domain/forum/application/use-cases/comment-on-answer'
 import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/register-student'
 import { CreateQuestionUseCase } from '@/domain/forum/application/use-cases/create-question'
 import { AnswerQuestionUseCase } from '@/domain/forum/application/use-cases/answer-question'
 import { GetQuestionBySlugCotroller } from './controllers/get-question-by-slug.controller'
 import { CommentOnQuestionCotroller } from './controllers/comment-on-question.controller'
 import { DeleteAnswerUseCase } from '@/domain/forum/application/use-cases/delete-answer'
+import { CommentOnAnswerCotroller } from './controllers/comment-on-answer.controller'
 import { EditAnswerUseCase } from '@/domain/forum/application/use-cases/edit-answer'
 import { CreateQuestionCotroller } from './controllers/create-question.controller'
 import { DeleteQuestionCotroller } from './controllers/delete-question.controller'
@@ -46,6 +48,7 @@ import { DatabaseModule } from '../database/database.module'
     ChooseQuestionBestAnswerCotroller,
     CommentOnQuestionCotroller,
     DeleteQuestionCommentCotroller,
+    CommentOnAnswerCotroller,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -62,6 +65,7 @@ import { DatabaseModule } from '../database/database.module'
     ChooseQuestionBestAnswerUseCase,
     CommentOnQuestionUseCase,
     DeleteQuestionCommentUseCase,
+    CommentOnAnswerUseCase,
   ],
 })
 export class HttpModule {}
