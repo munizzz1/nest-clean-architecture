@@ -1,12 +1,14 @@
 import { Module } from '@nestjs/common'
 
 import { ChooseQuestionBestAnswerUseCase } from '@/domain/forum/application/use-cases/choose-question-best-answer'
+import { DeleteQuestionCommentUseCase } from '@/domain/forum/application/use-cases/delete-question-comment'
 import { FetchQuestionsAnswersUseCase } from '@/domain/forum/application/use-cases/fetch-question-answers'
 import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-cases/fetch-recent-questions'
 import { ChooseQuestionBestAnswerCotroller } from './controllers/choose-question-best-answer.controller'
 import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticate-student'
 import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/get-question-by-slug'
 import { CommentOnQuestionUseCase } from '@/domain/forum/application/use-cases/comment-on-question'
+import { DeleteQuestionCommentCotroller } from './controllers/delete-question-comment.controller'
 import { FetchRecentQuestionsCotroller } from './controllers/fetch-recent-questions.controller'
 import { FetchQuestionAnswersCotroller } from './controllers/fetch-question-answers.controller'
 import { RegisterStudentUseCase } from '@/domain/forum/application/use-cases/register-student'
@@ -43,6 +45,7 @@ import { DatabaseModule } from '../database/database.module'
     FetchQuestionAnswersCotroller,
     ChooseQuestionBestAnswerCotroller,
     CommentOnQuestionCotroller,
+    DeleteQuestionCommentCotroller,
   ],
   providers: [
     CreateQuestionUseCase,
@@ -58,6 +61,7 @@ import { DatabaseModule } from '../database/database.module'
     FetchQuestionsAnswersUseCase,
     ChooseQuestionBestAnswerUseCase,
     CommentOnQuestionUseCase,
+    DeleteQuestionCommentUseCase,
   ],
 })
 export class HttpModule {}
