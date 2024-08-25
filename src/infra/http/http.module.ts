@@ -24,6 +24,7 @@ import { AnswerQuestionUseCase } from '@/domain/forum/application/use-cases/answ
 import { GetQuestionBySlugCotroller } from './controllers/get-question-by-slug.controller'
 import { CommentOnQuestionCotroller } from './controllers/comment-on-question.controller'
 import { DeleteAnswerUseCase } from '@/domain/forum/application/use-cases/delete-answer'
+import { UploadAttachmentCotroller } from './controllers/upload-attachment.controller'
 import { CommentOnAnswerCotroller } from './controllers/comment-on-answer.controller'
 import { EditAnswerUseCase } from '@/domain/forum/application/use-cases/edit-answer'
 import { CreateQuestionCotroller } from './controllers/create-question.controller'
@@ -58,6 +59,7 @@ import { DatabaseModule } from '../database/database.module'
     DeleteAnswerCommentCotroller,
     FetchQuestionCommentsCotroller,
     FetchAnswerCommentsCotroller,
+    UploadAttachmentCotroller,
   ],
   providers: [
     CreateQuestionUseCase,
