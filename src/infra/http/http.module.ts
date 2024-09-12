@@ -37,9 +37,11 @@ import { AuthenticateCotroller } from './controllers/authenticate.controller'
 import { EditAnswerCotroller } from './controllers/edit-answer.controller'
 import { CryptographyModule } from '../cryptography/cryptography.module'
 import { DatabaseModule } from '../database/database.module'
+import { StorageModule } from '../storage/storage.module'
+import { UploadAndCreateAttachmentUseCase } from '@/domain/forum/application/use-cases/upload-and-create-attachment'
 
 @Module({
-  imports: [DatabaseModule, CryptographyModule],
+  imports: [DatabaseModule, CryptographyModule, StorageModule],
   controllers: [
     CreateAccountCotroller,
     AuthenticateCotroller,
@@ -80,6 +82,7 @@ import { DatabaseModule } from '../database/database.module'
     DeleteAnswerCommentUseCase,
     FetchQuestionCommentsUseCase,
     FetchAnswerCommentsUseCase,
+    UploadAndCreateAttachmentUseCase,
   ],
 })
 export class HttpModule {}
