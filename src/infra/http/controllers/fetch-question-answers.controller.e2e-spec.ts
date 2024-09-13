@@ -55,7 +55,7 @@ describe('Fetch question answers (E2E)', () => {
     ])
 
     const response = await request(app.getHttpServer())
-      .get(`/questions/${question.id.toString}/answers`)
+      .get(`/questions/${question.id.toString()}/answers`)
       .set('Authorization', `Bearer ${accessToken}`)
 
     expect(response.statusCode).toBe(200)

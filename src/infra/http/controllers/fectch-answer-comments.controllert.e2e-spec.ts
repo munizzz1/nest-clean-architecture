@@ -68,7 +68,7 @@ describe('Fetch answer comments (E2E)', () => {
     ])
 
     const response = await request(app.getHttpServer())
-      .get(`/answers/${answer.id.toString}/comments`)
+      .get(`/answers/${answer.id.toString()}/comments`)
       .set('Authorization', `Bearer ${accessToken}`)
 
     expect(response.statusCode).toBe(200)

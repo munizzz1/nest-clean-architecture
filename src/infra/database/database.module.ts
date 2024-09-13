@@ -8,7 +8,9 @@ import { PrismaAnswerAttachmentsRepository } from './prisma/repositories/prisma-
 import { AnswerCommentsRepository } from '@/domain/forum/application/repositories/answer-comments-repository'
 import { PrismaQuestionCommentsRepository } from './prisma/repositories/prisma-question-comments-repository'
 import { PrismaAnswerCommentsRepository } from './prisma/repositories/prisma-answer-comments-repository'
+import { AttachmentsRepository } from '@/domain/forum/application/repositories/attachments-repository'
 import { QuestionsRepository } from '@/domain/forum/application/repositories/questions-repository'
+import { PrismaAttachmentsRepository } from './prisma/repositories/prisma-attachments-repository'
 import { StudentsRepository } from '@/domain/forum/application/repositories/students-repository'
 import { AnswersRepository } from '@/domain/forum/application/repositories/answers-repository'
 import { PrismaQuestionsRepository } from './prisma/repositories/prisma-questions-repository'
@@ -47,6 +49,10 @@ import { PrismaService } from './prisma/prisma.service'
       provide: QuestionAttachmentsRepository,
       useClass: PrismaQuestionAttachmentsRepository,
     },
+    {
+      provide: AttachmentsRepository,
+      useClass: PrismaAttachmentsRepository,
+    },
   ],
   exports: [
     PrismaService,
@@ -54,6 +60,7 @@ import { PrismaService } from './prisma/prisma.service'
     AnswerAttachmentsRepository,
     QuestionCommentsRepository,
     AnswerCommentsRepository,
+    AttachmentsRepository,
     QuestionsRepository,
     StudentsRepository,
     AnswersRepository,

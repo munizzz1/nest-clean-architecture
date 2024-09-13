@@ -1,19 +1,22 @@
 import { INestApplication } from '@nestjs/common'
+import { JwtService } from '@nestjs/jwt'
 import { Test } from '@nestjs/testing'
 import request from 'supertest'
 
 import { DatabaseModule } from '@/infra/database/database.module'
+import { QuestionFactory } from 'test/factories/make-question'
 import { StudentFactory } from 'test/factories/make-student'
 import { AppModule } from '@/infra/app.module'
-import { JwtService } from '@nestjs/jwt'
 
-describe('Upload attachments (E2E)', () => {
-  let app: INestApplication, jwt: JwtService, studentFactory: StudentFactory
+describe('Upload attachment (E2E)', () => {
+  let app: INestApplication
+  let studentFactory: StudentFactory
+  let jwt: JwtService
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [AppModule, DatabaseModule],
-      providers: [StudentFactory],
+      providers: [StudentFactory, QuestionFactory],
     }).compile()
 
     app = moduleRef.createNestApplication()
@@ -30,10 +33,13 @@ describe('Upload attachments (E2E)', () => {
     const accessToken = jwt.sign({ sub: user.id.toString() })
 
     const response = await request(app.getHttpServer())
-      .get('/attachments')
+      .post('/attachments')
       .set('Authorization', `Bearer ${accessToken}`)
       .attach('file', './test/e2e/sample-upload.png')
 
     expect(response.statusCode).toBe(201)
+    expect(response.body).toEqual({
+      attachmentId: expect.any(String),
+    })
   })
 })

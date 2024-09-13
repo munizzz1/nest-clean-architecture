@@ -55,7 +55,7 @@ describe('Fetch question comments (E2E)', () => {
     ])
 
     const response = await request(app.getHttpServer())
-      .get(`/questions/${question.id.toString}/comments`)
+      .get(`/questions/${question.id.toString()}/comments`)
       .set('Authorization', `Bearer ${accessToken}`)
 
     expect(response.statusCode).toBe(200)

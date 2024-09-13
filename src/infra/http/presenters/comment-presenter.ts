@@ -4,7 +4,7 @@ export class CommentPresenter {
   static toHTTP(comment: Comment<any>) {
     return {
       id: comment.id.toString(),
-      title: comment.content,
+      content: comment.content,
       createdAt: comment.createdAt,
       updatedAt: comment.updatedAt,
     }
