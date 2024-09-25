@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common'
 
+import { PrismaService } from '@/infra/database/prisma/prisma.service'
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import {
   QuestionAttachment,
   QuestionAttachmentProps,
 } from '@/domain/forum/enterprise/entities/question-attachment'
-
-import { PrismaService } from '@/infra/database/prisma/prisma.service'
-import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 
 export function makeQuestionAttachment(
   override: Partial<QuestionAttachmentProps> = {},

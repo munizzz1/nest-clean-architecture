@@ -15,6 +15,7 @@ import { UserPayload } from '@/infra/auth/jwt-strategy'
 
 const answerQuestionBodySchema = z.object({
   content: z.string(),
+  attachments: z.array(z.string().uuid()),
 })
 
 const bodyValidationPipe = new ZodValidationPipe(answerQuestionBodySchema)
@@ -32,14 +33,14 @@ export class AnswerQuestionCotroller {
     @CurrentUser() user: UserPayload,
     @Param('questionId') questionId: string,
   ) {
-    const { content } = body
+    const { content, attachments } = body
     const userId = user.sub
 
     const result = await this.answerQuestion.execute({
       authorId: userId,
       content,
       questionId,
-      attachmentsIds: [],
+      attachmentsIds: attachments,
     })
 
     if (result.isFailure()) {

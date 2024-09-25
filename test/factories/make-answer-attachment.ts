@@ -1,3 +1,6 @@
+import { Injectable } from '@nestjs/common'
+
+import { PrismaService } from '@/infra/database/prisma/prisma.service'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import {
   AnswerAttachment,
@@ -18,4 +21,26 @@ export function makeAnswerAttachment(
   )
 
   return answerAttachment
+}
+
+@Injectable()
+export class AnswerAttachmentFactory {
+  constructor(private prisma: PrismaService) {}
+
+  async makePrismaAnswerAttachment(
+    data: Partial<AnswerAttachmentProps> = {},
+  ): Promise<AnswerAttachment> {
+    const answerAttachment = makeAnswerAttachment(data)
+
+    await this.prisma.attachment.update({
+      where: {
+        id: answerAttachment.attachmentId.toString(),
+      },
+      data: {
+        answerId: answerAttachment.answerId.toString(),
+      },
+    })
+
+    return answerAttachment
+  }
 }
