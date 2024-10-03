@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common'
 
 import { AnswerCommentsRepository } from '@/domain/forum/application/repositories/answer-comments-repository'
+import { CommentWithAuthor } from '@/domain/forum/enterprise/entities/value-objects/comment-with-author'
+import { PrismaCommentWithAuthorMapper } from '../mappers/prisma-comment-with-author-mapper'
 import { PrismaAnswerCommentMapper } from '../mappers/prisma-answer-comment-mapper'
 import { AnswerComment } from '@/domain/forum/enterprise/entities/answer-comment'
 import { PaginationParams } from '@/core/repositories/pagination-params'
@@ -39,6 +41,27 @@ export class PrismaAnswerCommentsRepository
     })
 
     return answerComments.map(PrismaAnswerCommentMapper.toDomain)
+  }
+
+  async findManybyAnswerIdWithAuthor(
+    answerId: string,
+    params: PaginationParams,
+  ): Promise<CommentWithAuthor[]> {
+    const answerComments = await this.prisma.comment.findMany({
+      where: {
+        answerId,
+      },
+      include: {
+        author: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+      take: 20,
+      skip: (params.page - 1) * 20,
+    })
+
+    return answerComments.map(PrismaCommentWithAuthorMapper.toDomain)
   }
 
   async create(answerComment: AnswerComment): Promise<void> {
