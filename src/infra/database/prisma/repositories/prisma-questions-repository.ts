@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common'
 
 import { QuestionAttachmentsRepository } from '@/domain/forum/application/repositories/question-attachments-repository'
+import { QuestionDetails } from '@/domain/forum/enterprise/entities/value-objects/question-details'
 import { QuestionsRepository } from '@/domain/forum/application/repositories/questions-repository'
+import { PrismaQuestionDetailsMapper } from '../mappers/prisma-question-details-mapper'
 import { PaginationParams } from '@/core/repositories/pagination-params'
 import { PrismaQuestionMapper } from '../mappers/prisma-question-mapper'
 import { Question } from '@/domain/forum/enterprise/entities/question'
@@ -36,6 +38,22 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
     if (!question) return null
 
     return PrismaQuestionMapper.toDomain(question)
+  }
+
+  async findDetailsBySlug(slug: string): Promise<QuestionDetails | null> {
+    const question = await this.prisma.question.findUnique({
+      where: {
+        slug,
+      },
+      include: {
+        author: true,
+        attachments: true,
+      },
+    })
+
+    if (!question) return null
+
+    return PrismaQuestionDetailsMapper.toDomain(question)
   }
 
   async findManyRecent({ page }: PaginationParams): Promise<Question[]> {
