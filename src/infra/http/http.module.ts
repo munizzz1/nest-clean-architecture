@@ -9,6 +9,7 @@ import { FetchRecentQuestionsUseCase } from '@/domain/forum/application/use-case
 import { ChooseQuestionBestAnswerCotroller } from './controllers/choose-question-best-answer.controller'
 import { FetchAnswerCommentsUseCase } from '@/domain/forum/application/use-cases/fetch-answer-comments'
 import { DeleteAnswerCommentUseCase } from '@/domain/forum/application/use-cases/delete-answer-comment'
+import { ReadNotificationUseCase } from '@/domain/notification/application/use-cases/read-notification'
 import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticate-student'
 import { GetQuestionBySlugUseCase } from '@/domain/forum/application/use-cases/get-question-by-slug'
 import { CommentOnQuestionUseCase } from '@/domain/forum/application/use-cases/comment-on-question'
@@ -27,6 +28,7 @@ import { GetQuestionBySlugCotroller } from './controllers/get-question-by-slug.c
 import { CommentOnQuestionCotroller } from './controllers/comment-on-question.controller'
 import { DeleteAnswerUseCase } from '@/domain/forum/application/use-cases/delete-answer'
 import { EditQuestionUseCase } from '@/domain/forum/application/use-cases/edit-question'
+import { ReadNotificationController } from './controllers/read-notification.controller'
 import { UploadAttachmentCotroller } from './controllers/upload-attachment.controller'
 import { CommentOnAnswerCotroller } from './controllers/comment-on-answer.controller'
 import { EditAnswerUseCase } from '@/domain/forum/application/use-cases/edit-answer'
@@ -52,6 +54,7 @@ import { StorageModule } from '../storage/storage.module'
     FetchQuestionAnswersCotroller,
     DeleteAnswerCommentCotroller,
     FetchAnswerCommentsCotroller,
+    ReadNotificationController,
     CommentOnQuestionCotroller,
     GetQuestionBySlugCotroller,
     UploadAttachmentCotroller,
@@ -77,6 +80,7 @@ import { StorageModule } from '../storage/storage.module'
     FetchAnswerCommentsUseCase,
     GetQuestionBySlugUseCase,
     CommentOnQuestionUseCase,
+    ReadNotificationUseCase,
     CommentOnAnswerUseCase,
     RegisterStudentUseCase,
     DeleteQuestionUseCase,
