@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   postgres:
@@ -6,14 +6,14 @@ services:
     image: postgres
     ports:
       - 5432:5432
-    enviroment:
+    environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: docker
       POSTGRES_DB: nest-clean
       PGDATA: /data/postgres
     volumes:
       - ./data/pg:/data/postgres
-      
+
   cache:
     container_name: nest-clean-cache
     image: redis
